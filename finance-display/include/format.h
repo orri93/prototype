@@ -1,7 +1,11 @@
 #ifndef _FINANCE_DISPLAY_FORMAT_H_
 #define _FINANCE_DISPLAY_FORMAT_H_
 
+#ifdef GOS_PROTOTYPE
+#include <stddef.h>
+#else
 #include <Arduino.h>
+#endif
 
 #include "types.h"
 

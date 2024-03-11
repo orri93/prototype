@@ -1,14 +1,22 @@
 #include "format.h"
 
+#ifdef GOS_PROTOTYPE
+#include <string.h>
+#include <stdlib.h>
+#endif
+
 static char* nfb = new char[32];
 
 static size_t fd_format_quote(char* buffer, fd_rdd_data* data, int at);
 
 size_t fd_format_quotes(char* buffer, fd_rdd_data* data) {
+  size_t result = 0;
   for (int i = 0; i < data->count; i++) {
     size_t fl = fd_format_quote(buffer, data, i);
     buffer += fl;
+    result += fl;
   }
+  return result;
 }
 
 size_t fd_format_quote(char* buffer, fd_rdd_data* data, int at) {
